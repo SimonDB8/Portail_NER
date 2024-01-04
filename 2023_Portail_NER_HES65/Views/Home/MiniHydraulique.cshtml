@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    ViewData["Title"] = "MiniHydraulique";
+}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mini-hydraulic Chart</title>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+      <canvas id="minihydroChart" width="600" height="400"></canvas>
+
+      <script>
+        // Data
+        const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
+        const minihydroData = [429123000, 401420000, 450599000, 435000000, 492000000, 495610000, 512000000, 474000000, 549433000];
+
+        // Mini-hydraulic Chart
+        const minihydroChart = new Chart(document.getElementById('minihydroChart').getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [{
+              label: 'Mini-hydraulique (KWh)',
+              data: minihydroData,
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              fill: false,
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                type: 'linear',
+                position: 'bottom'
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Mini-hydraulique (KWh)'
+                }
+              }
+            }
+          }
+        });
+      </script>
+    </body>
+    </html>
